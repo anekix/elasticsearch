@@ -27,3 +27,22 @@ curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'
 ```python
 curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'
 ```
+<b> Search using elasticsearch DSL ( domain specific language  )
+```python
+Using Term query
+curl -XGET 'http://localhost:9200/twitter/tweet/_search' -d '{
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+'
+```
+<b> Get particlar fields</b>
+```python
+{
+    "fields" : ["user", "postDate"],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+```
